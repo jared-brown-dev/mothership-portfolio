@@ -14,7 +14,11 @@
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/typography": "^0.5.19",
     "astro": "^6.0.5",
-    "npm": "^11.11.1"
+    "metascraper": "^5.50.0",
+    "metascraper-image": "^5.50.0",
+    "metascraper-title": "^5.50.0",
+    "npm": "^11.11.1",
+    "rss-parser": "^3.13.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.1",

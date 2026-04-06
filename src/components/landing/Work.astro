@@ -1,94 +1,113 @@
 ---
 import BgGrid from "@/components/assets/BgGrid.astro";
 import { Image } from "astro:assets";
-import Trendspotter from "@/images/work/trendspotter.png";
-import Navy from "@/images/work/navy.png";
-import Spaziobianco from "@/images/work/spaziobianco.png";
-import Phanatik from "@/images/work/phanatik.png";
-import Studiomax from "@/images/work/studiomax.png";
-import ProfolioxLight from "@/images/work/profolioxLight.png";
-import ProfolioxDark from "@/images/work/profolioxDark.png";
-import Outkast from "@/images/work/outkast.png";
-import Author from "@/images/work/author.png";
-import PrimapersonaLight from "@/images/work/primapersonaLight.png";
-import PrimapersonaDark from "@/images/work/primapersonaDark.png";
-import SimplexityLight from "@/images/work/simplexityLight.png";
-import SimplexityDark from "@/images/work/simplexityDark.png";
-import Carbon from "@/images/work/carbon.png";
-import Williamsburg from "@/images/work/williamsburg.png";
-import KoteiLight from "@/images/work/koteiLight.png";
-import KoteiDark from "@/images/work/koteiDark.png";
-import Dusk from "@/images/work/dusk.png";
-import Quartiere from "@/images/work/quartiere.png";
-import Flabbergasted from "@/images/work/flabbergasted.png";
-import Aubergine from "@/images/work/aubergine.png";
-import FlacoLight from "@/images/work/flacoLight.png";
-import FlacoDark from "@/images/work/flacoDark.png";
-import Buio from "@/images/work/buio.png";
-import Alfred from "@/images/work/alfred.png";
-import Hemingway from "@/images/work/hemingway.png";
-import StreamerLight from "@/images/work/streamerLight.png";
-import StreamerDark from "@/images/work/streamerDark.png";
-import Vanta from "@/images/work/vanta.png";
-import Semplice from "@/images/work/semplice.png";
-import Riflesso from "@/images/work/riflesso.png";
-import Carriera from "@/images/work/carriera.png";
-import Brightlight from "@/images/work/brightlight.png";
-import Hirewise from "@/images/work/hirewise.png";
-import Snowpeak from "@/images/work/snowpeak.png";
-import Enlightr from "@/images/work/enlightr.png";
-import Superstore from "@/images/work/superstore.png";
-const themes = [
-  { name: "Trendspotter", image: Trendspotter },
-  { name: "Spaziobianco", image: Spaziobianco },
-  { name: "Phanatik", image: Phanatik },
-  { name: "Studiomax", image: Studiomax },
-  { name: "ProfolioxLight", image: ProfolioxLight },
-  { name: "ProfolioxDark", image: ProfolioxDark },
-  { name: "Outkast", image: Outkast },
-  { name: "Author", image: Author },
-  { name: "PrimapersonaLight", image: PrimapersonaLight },
-  { name: "PrimapersonaDark", image: PrimapersonaDark },
-  { name: "SimplexityLight", image: SimplexityLight },
-  { name: "SimplexityDark", image: SimplexityDark },
-  { name: "Carbon", image: Carbon },
-  { name: "Williamsburg", image: Williamsburg },
-  { name: "KoteiLight", image: KoteiLight },
-  { name: "KoteiDark", image: KoteiDark },
-  { name: "Dusk", image: Dusk },
-  { name: "Quartiere", image: Quartiere },
-  { name: "Flabbergasted", image: Flabbergasted },
-  { name: "Aubergine", image: Aubergine },
-  { name: "FlacoLight", image: FlacoLight },
-  { name: "FlacoDark", image: FlacoDark },
-  { name: "Buio", image: Buio },
-  { name: "Alfred", image: Alfred },
-  { name: "Hemingway", image: Hemingway },
-  { name: "StreamerLight", image: StreamerLight },
-  { name: "StreamerDark", image: StreamerDark },
-  { name: "Vanta", image: Vanta },
-  { name: "Semplice", image: Semplice },
-  { name: "Riflesso", image: Riflesso },
-  { name: "Carriera", image: Carriera },
-  { name: "Brightlight", image: Brightlight },
-  { name: "Hirewise", image: Hirewise },
-  { name: "Snowpeak", image: Snowpeak },
-  { name: "Enlightr", image: Enlightr },
-  { name: "Superstore", image: Superstore },
-  { name: "Navy", image: Navy },
+import BluepeakLogo from "@/images/work/bluepeak.png";
+import CufflinksLogo from "@/images/work/cufflinks.jpg";
+import AmazonRoboticsLogo from "@/images/work/amazon-robotics-logo.png";
+const experience = [
+  {
+    company: "Bluepeak",
+    title: "Network Operations Tech",
+    dates: "Sep 2025 — Present",
+    location: "Sioux Falls, SD",
+    logo: { src: BluepeakLogo, alt: "Bluepeak" },
+    tile: { fit: "cover" },
+    highlights: [
+      "Partner with Automation + Engineering using GitLab and Starlight/Astro to create SOPs for NGINX deployments on K8s",
+      "Monitor real-time network health (SolarWinds/Wayfinder) and coordinate with field techs + engineering to resolve outages",
+      "Diagnose outages and service degradation to maintain 99%+ uptime across regional networks",
+    ],
+  },
+  {
+    company: "Cufflinks Inc",
+    title: "IT Coordinator",
+    dates: "Feb 2024 — Aug 2025",
+    location: "Sioux Falls, SD",
+    logo: { src: CufflinksLogo, alt: "Cufflinks" },
+    tile: { fit: "cover" },
+    highlights: [
+      "Sole IT contact for 25+ users, supporting a mixed Windows/macOS environment with high-touch, empathetic support",
+      "Translated requirements across HR/Finance/Sales to deliver jargon-free implementations that fit each department’s workflows",
+      "Administered Microsoft 365 + Entra ID/Active Directory security and maintained detailed system documentation",
+    ],
+  },
+  {
+    company: "Amazon Robotics",
+    title: "Advanced Robotics Technician",
+    dates: "Jan 2023 — Feb 2024",
+    location: "Sioux Falls, SD",
+    logo: { src: AmazonRoboticsLogo, alt: "Amazon Robotics" },
+    tile: { fit: "contain", padClass: "p-20", bgClass: "bg-white", scaleClass: "scale-90" },
+    highlights: [
+      "Diagnosed complex hardware/software issues, improving holiday throughput by 12% and saving $40K through technical efficiency",
+      "Collaborated with cross-functional warehouse teams under strict deadlines to improve robotic system reliability",
+    ],
+  },
 ];
+
+// To add logos:
+// 1) Drop images into `src/images/companies/`
+// 2) Import them at the top (e.g. `import BluepeakLogo from "@/images/companies/bluepeak.png";`)
+// 3) Set `logo: { src: BluepeakLogo, alt: "Bluepeak" }`
+
+const initials = (name) =>
+  String(name ?? "")
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((s) => s[0]?.toUpperCase())
+    .join("");
 ---
 
 <style>
   .keen-slider__slide {
     overflow: visible;
   }
+
+  .flip {
+    perspective: 1100px;
+  }
+  .flip__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .flip:is(:hover, :focus-within) .flip__inner {
+    transform: rotateY(180deg);
+  }
+  .flip__face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .flip__back {
+    transform: rotateY(180deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flip__inner {
+      transition: none;
+    }
+    .flip:is(:hover, :focus-within) .flip__inner {
+      transform: none;
+    }
+    .flip__back {
+      transform: none;
+      position: static;
+    }
+    .flip__front {
+      display: none;
+    }
+  }
 </style>
 <section class="border-b border-white/20 divide-y divide-white/20">
   <div class="px-8 py-6 relative">
     <BgGrid />
     <h2 class="text-3xl font-black text-white uppercase">
-      Designed and developed websites at AstroMax
+      Experience
     </h2>
   </div>
   <div class="relative">
@@ -126,9 +145,147 @@ const themes = [
     </div>
     <div id="keen-slider" class="keen-slider relative">
       {
-        themes.map(({ name, image }) => (
-          <div class="relative w-full keen-slider__slide ">
-            <Image src={image} width={800} height={800} alt={name} class="aspect-auto" />
+        experience.map((role) => (
+          <div class="relative w-full keen-slider__slide">
+            <div class="h-full px-4 lg:px-6 py-10">
+              <div class="mx-auto flip h-[340px] max-w-[620px] rounded-2xl">
+                <div class="flip__inner h-full">
+                  <div class="flip__face flip__front h-full rounded-2xl border border-white/15 bg-white/5 backdrop-blur shadow-[0_0_0_1px_rgba(255,255,255,0.04)] overflow-hidden">
+                    {(() => {
+                      const isLightTile = (role.tile?.bgClass ?? "").includes("bg-white");
+                      return (
+                        <>
+                    <div
+                      class:list={[
+                        "absolute inset-0",
+                        role.tile?.bgClass ?? "bg-black",
+                        role.logo ? "opacity-100" : "opacity-0",
+                      ]}
+                    />
+
+                    {role.logo ? (
+                      <div
+                        class:list={[
+                          "absolute inset-0",
+                          role.tile?.fit === "contain"
+                            ? "flex items-center justify-center"
+                            : "",
+                          role.tile?.padClass ?? "",
+                        ]}
+                      >
+                        <Image
+                          src={role.logo.src}
+                          alt={role.logo.alt ?? `${role.company} logo`}
+                          width={1240}
+                          height={800}
+                          class:list={[
+                            role.tile?.fit === "contain"
+                              ? "w-auto h-auto max-w-full max-h-full object-contain"
+                              : "w-full h-full object-cover",
+                            role.tile?.scaleClass ?? "",
+                          ]}
+                        />
+                      </div>
+                    ) : null}
+
+                    <div
+                      class:list={[
+                        "absolute inset-0",
+                        isLightTile
+                          ? "bg-gradient-to-t from-white/0 via-white/0 to-white/0"
+                          : "bg-gradient-to-t from-black/65 via-black/30 to-black/10",
+                      ]}
+                    />
+
+                    <div class="relative h-full px-6 py-6 flex flex-col justify-between">
+                      <div
+                        class:list={[
+                          "flex items-center justify-between gap-3",
+                          isLightTile ? "text-black/70" : "text-white",
+                        ]}
+                      >
+                        <div class:list={[isLightTile ? "text-black/60" : "text-white/90", "font-semibold tracking-tight"]}>
+                          {role.dates}
+                        </div>
+                        <div class:list={[isLightTile ? "text-black/50" : "text-white/70", "font-medium tracking-tight"]}>
+                          {role.location}
+                        </div>
+                      </div>
+
+                      <div class="pb-1">
+                        {!role.logo ? (
+                          <div class="mb-3 inline-flex size-14 rounded-2xl bg-white/10 border border-white/15 items-center justify-center text-white font-black text-lg">
+                            {initials(role.company)}
+                          </div>
+                        ) : null}
+
+                        <div
+                          class:list={[
+                            "inline-block rounded-xl px-3 py-2 backdrop-blur",
+                            isLightTile ? "bg-black/55" : "bg-black/35",
+                          ]}
+                        >
+                          <div class="text-white font-black tracking-tight text-3xl leading-tight text-balance">
+                            {role.company}
+                          </div>
+                          <div class="mt-1 text-white/80 font-semibold tracking-tight">
+                            Hover to flip
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                        </>
+                      );
+                    })()}
+                  </div>
+
+                  <div class="flip__face flip__back h-full rounded-2xl border border-white/15 bg-white/5 backdrop-blur shadow-[0_0_0_1px_rgba(255,255,255,0.04)]">
+                    <a
+                      href="#experience"
+                      class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-10 focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:text-black"
+                    >
+                      Flip card focused
+                    </a>
+
+                    <div class="h-full px-6 py-6 flex flex-col">
+                      <div class="flex items-start justify-between gap-4">
+                        <div class="min-w-0">
+                          <div class="text-white font-black tracking-tight text-xl leading-tight break-words text-balance">
+                            {role.title}
+                          </div>
+                          <div class="text-white/70 font-semibold tracking-tight break-words text-balance">
+                            {role.company}
+                          </div>
+                        </div>
+                        <div class="text-right shrink-0">
+                          <div class="text-white/70 font-semibold tracking-tight">
+                            {role.dates}
+                          </div>
+                          <div class="text-white/50 font-medium tracking-tight">
+                            {role.location}
+                          </div>
+                        </div>
+                      </div>
+
+                      {role.highlights?.length ? (
+                        <ul class="mt-5 space-y-2 text-white/80 text-sm leading-6">
+                          {role.highlights.slice(0, 2).map((h) => (
+                            <li class="flex gap-2">
+                              <span class="text-white/35">•</span>
+                              <span>{h}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+
+                      <div class="mt-auto pt-5 text-white/50 text-xs">
+                        Tip: tab into a card to flip on focus
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         ))
       }
@@ -149,7 +306,7 @@ const themes = [
         if (mouseOver) return;
         timeout = setTimeout(() => {
           slider.next();
-        }, 500);
+        }, 2200);
       }
       slider.on("created", () => {
         slider.container.addEventListener("mouseover", () => {
@@ -176,7 +333,7 @@ const themes = [
       {
         loop: true,
         defaultAnimation: {
-          duration: 1000,
+          duration: 1400,
         },
         detailsChanged: (s) => {
           s.slides.forEach((element, idx) => {
@@ -185,15 +342,22 @@ const themes = [
         },
         slides: {
           origin: "center",
-          perView: 2.2,
-          spacing: 12,
+          perView: 1.05,
+          spacing: 16,
         },
         breakpoints: {
+          "(min-width: 768px)": {
+            slides: {
+              origin: "center",
+              perView: 1.35,
+              spacing: 18,
+            },
+          },
           "(min-width: 1024px)": {
             slides: {
               origin: "center",
-              perView: 3.5,
-              spacing: 0,
+              perView: 2.05,
+              spacing: 20,
             },
           },
         },

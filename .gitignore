@@ -1,0 +1,24 @@
+# Dependencies (Never upload these! They are thousands of tiny files)
+node_modules/
+
+# Build output (GitHub Actions will build this itself, so we don't need to store it)
+dist/
+build/
+
+# Runtime and Cache
+.astro/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment Variables (CRITICAL: Prevents leaking API keys if you add them later)
+.env
+.env.production
+.env.local
+
+# macOS System Files
+.DS_Store
+
+# IDE Settings
+.vscode/
+.idea/

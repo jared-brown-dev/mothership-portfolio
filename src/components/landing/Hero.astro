@@ -1,21 +1,204 @@
 ---
 import Banner from "@/components/landing/Banner.astro";
 import Testimonials from "@/components/landing/Testimonials.astro";
-// Assets
 import BgGrid from "@/components/assets/BgGrid.astro";
+import { getAlertCarouselItems } from "@/lib/alertNews";
+
+const featured = await getAlertCarouselItems();
 ---
 
 <section class="border-white/20 border-b">
-  <div class="bg-grid p-8 relative">
+  <div class="bg-grid p-6 md:p-8 relative min-h-[280px] md:min-h-[320px]">
     <BgGrid />
 
-    <h1
-      class="text-white tracking-tighter font-black uppercase text-3xl lg:text-8xl relative"
-    >
-      Maximize your online presence with a unique and engaging one-page website
-      that delivers outstanding results.
-    </h1>
+    <div class="relative z-[1]">
+      <p
+        class="text-eagle text-xs font-black uppercase tracking-widest mb-4"
+      >
+        Latest alerts
+      </p>
+
+      <div class="relative">
+        <div
+          class="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-1 pointer-events-none z-10 md:px-0"
+        >
+          <button
+            type="button"
+            id="hero-carousel-prev"
+            aria-label="Previous slide"
+            class="pointer-events-auto p-2 size-9 bg-white/80 hover:bg-white text-black rounded-full shadow transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 256 256"
+              class="size-4"
+              ><path
+                d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"
+              ></path></svg
+            >
+          </button>
+          <button
+            type="button"
+            id="hero-carousel-next"
+            aria-label="Next slide"
+            class="pointer-events-auto p-2 size-9 bg-white hover:bg-white text-black rounded-full shadow transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 256 256"
+              class="size-4"
+              ><path
+                d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"
+              ></path></svg
+            >
+          </button>
+        </div>
+
+        <div
+          id="hero-carousel"
+          class="keen-slider relative pb-2"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Latest articles from Google Alert feeds"
+        >
+          {
+            featured.map((item) => {
+              const isExternal = item.href.startsWith("http");
+              return (
+              <div class="keen-slider__slide min-h-0">
+                <div class="pr-2 pl-12 md:pl-14 md:pr-14">
+                  <a
+                    href={item.href}
+                    {...(isExternal
+                      ? {
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                        }
+                      : {})}
+                    class="group block rounded-2xl border border-white/15 bg-white/[0.03] overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.04)] transition hover:border-white/25"
+                  >
+                    <div class="aspect-[16/10] md:aspect-[21/9] relative bg-black/40 overflow-hidden">
+                      {item.imageUrl ? (
+                        <img
+                          src={item.imageUrl}
+                          alt={item.title}
+                          width={1200}
+                          height={630}
+                          class="w-full h-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-white/10 to-white/[0.02] text-eagle text-xs font-semibold uppercase tracking-wide px-6 text-center">
+                          <span class="text-white/90 font-black text-sm">
+                            No preview
+                          </span>
+                          <span>RSS feed link or article without og:image</span>
+                        </div>
+                      )}
+                    </div>
+                    <div class="p-4 md:p-5">
+                      <div
+                        class="flex justify-between items-start gap-3 mb-1"
+                      >
+                        <span
+                          class="text-eagle text-[10px] md:text-xs font-black uppercase tracking-widest font-mono"
+                        >
+                          {item.label}
+                        </span>
+                        {
+                          item.metaLine ? (
+                            <span class="text-white/45 text-[9px] md:text-[10px] shrink-0 tabular-nums">
+                              {item.metaLine}
+                            </span>
+                          ) : null
+                        }
+                      </div>
+                      <p class="text-white text-sm md:text-base lg:text-lg font-semibold tracking-tight leading-snug text-balance">
+                        {item.title}
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            );
+            })
+          }
+        </div>
+      </div>
+    </div>
   </div>
   <Banner />
   <Testimonials />
 </section>
+
+<style>
+  .keen-slider__slide {
+    overflow: visible;
+  }
+</style>
+
+<script type="module">
+  import KeenSlider from "https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm";
+  window.addEventListener("DOMContentLoaded", () => {
+    const autoplay = (slider) => {
+      let timeout;
+      let mouseOver = false;
+      function clearNextTimeout() {
+        clearTimeout(timeout);
+      }
+      function nextTimeout() {
+        clearTimeout(timeout);
+        if (mouseOver) return;
+        timeout = setTimeout(() => {
+          slider.next();
+        }, 5500);
+      }
+      slider.on("created", () => {
+        slider.container.addEventListener("mouseover", () => {
+          mouseOver = true;
+          clearNextTimeout();
+        });
+        slider.container.addEventListener("mouseout", () => {
+          mouseOver = false;
+          nextTimeout();
+        });
+        nextTimeout();
+      });
+      slider.on("dragStarted", clearNextTimeout);
+      slider.on("animationEnded", nextTimeout);
+      slider.on("updated", nextTimeout);
+    };
+
+    const el = document.getElementById("hero-carousel");
+    if (!el) return;
+
+    const slider = new KeenSlider(
+      el,
+      {
+        loop: true,
+        defaultAnimation: { duration: 1100 },
+        slides: {
+          origin: "center",
+          perView: 1,
+          spacing: 0,
+        },
+        breakpoints: {
+          "(min-width: 768px)": {
+            slides: { origin: "center", perView: 1.08, spacing: 14 },
+          },
+        },
+      },
+      [autoplay]
+    );
+
+    document
+      .getElementById("hero-carousel-prev")
+      ?.addEventListener("click", () => slider.prev());
+    document
+      .getElementById("hero-carousel-next")
+      ?.addEventListener("click", () => slider.next());
+  });
+</script>

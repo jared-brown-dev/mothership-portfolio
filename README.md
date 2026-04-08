@@ -3,11 +3,10 @@
 ## License
 
 This template is open-source software licensed under the [GPL-3.0 license](https://opensource.org/licenses/GPL-3.0). Feel free to fork, modify, and use it in your projects.
-## Before using this template publicly, please ensure you remove my name and any links associated with me from the website.
 
 ## This template is using Tailwind CSS V4
 
-Now we are using only a CSS file. It's called `global.css` and it's located in the src/styles folder. Now we are eimporting Tailwind CSS on the same file instead of using the `tailwind.config.cjs` file. Like this:
+We are using a CSS file. It's called `global.css` and it's located in the src/styles folder. Now we are eimporting Tailwind CSS on the same file instead of using the `tailwind.config.cjs` file. Like this:
 
 ```css
 // Importing Tailwind CSS
@@ -17,7 +16,7 @@ Now we are using only a CSS file. It's called `global.css` and it's located in t
 @plugin "@tailwindcss/forms";
 ```
 
-Then to add your styles you will use the @theme directive. Like this:
+Then to add styles I use the @theme directive. Like this:
 
 ```css
 @theme {
@@ -25,9 +24,7 @@ Then to add your styles you will use the @theme directive. Like this:
 }
 ```
 
-Remember this is just in Alpha version, so you can use it as you want. Just keep an eye on the changes that Tailwind CSS is going to make.
 ## Template Structure
-Inside of your Astro project, you'll see the following folders and files:
 ```
 /
 ├── public/
